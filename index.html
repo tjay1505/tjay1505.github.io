@@ -2,100 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="sass/index.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calcy</title>
+    <title>PO</title>
+    <link rel="stylesheet" href="./sass/po.css">
 </head>
 <body>
-    <div id="contents" class="content">
-        <div class="header">
+    <div class="out">
+        <div class="mainscreen">
+            <img src="./asset/whalee.jpg" class="opscreen" id="opscr" >
 
-            <div id="logos" class="logo">
-                <h1>calcy <a href="./sample.html">a</a> </h1>
+            <div class="tools">
+                <div class="filter" id="so" onclick="makeblur(document.getElementById('so').innerText)">BLUR</div>
+                <div class="filter" id="so2" onclick="makeblur(document.getElementById('so2').innerText)">CON+</div>
+                <div class="filter" id="so3" onclick="makeblur(document.getElementById('so3').innerText)" >CON-</div>
+                <div class="filter" id="so4" onclick="makeblur(document.getElementById('so4').innerText)">BW</div>
+                <label id="diabox" for="inpu" >
+                     Add-Img
+                </label>
+                <input type="file" id="inpu" accept="image/jpeg ,image/png , image/jpg" >
             </div>
-
-            <div id="bugermenus" class="bugermenu" onclick="Opener()" >
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-            </div>
-
-        </div>
-        
-        <div class="opscreen">
-            <h2 id="op" >8608167</h2>
-        </div>
-
-        <div class="keypad">
-            <button onclick="Loader()" class="boxes">1</button>
-            <button class="boxes">2</button>
-            <button class="boxes">3</button>
-            <button onclick="Adder()" class="boxes">+</button>
-            <button class="boxes">4</button>
-            <button class="boxes">5</button>
-            <button class="boxes">6</button>
-            <button class="boxes">-</button>
-            <button class="boxes">7</button>
-            <button class="boxes">8</button>
-            <button class="boxes">9</button>
-            <button class="boxes">x</button>
-            <button class="boxes">0</button>
-            <button class="boxes">.</button>
-            <button class="boxes prime1">DEL</button>
-            <button class="boxes">/</button>
-            <button onclick="Reseter()" class="boxes prime prime1">RESET</button>
-            <button onclick="Calc()" class="boxes prime prime2">=</button>
         </div>
     </div>
-    <div id="themeboxs" class="themebox">
-        <div class="themenav">
-            <span onclick="Closer()" class="themehead1" >x close</span>
-            <span onclick="Theme1()" >theme 1</span>
-            <span onclick="Theme2()" >theme 2</span>
-            <span onclick="Theme3()" >theme 3</span>
-            
-        </div>
-    </div>
-    <!-- <script src="/index.js"></script> -->
     <script>
-        const themeboxobj = document.getElementById('themeboxs');
-        const contentsobj = document.getElementById('contents');
-        const logosobj = document.getElementById('logos');
-        const bugermenusobj = document.getElementById('bugermenus');
-        bugermenusobj
-        function Opener(){
-            if(themeboxobj.style.display === 'none'){
-            themeboxobj.style.display = 'flex';
-            contentsobj.style.filter = 'blur(3.5px)'
-        }
-        else{
-            themeboxobj.style.display = 'none';
-        }
-        }
-        function Closer(){
-            themeboxobj.style.display = 'none';
-            contentsobj.style.filter = 'blur(0px)'
-        }
-        function Theme1(){
-            contentsobj.style.backgroundColor = 'white';
-            Closer();
-        }
-        function Theme2(){
-            const var1 = document.querySelector(':root');
-            console.log();
-            Closer();
-        }
-        function Theme3(){
-            const var1 = document.querySelector(':root');
-            console.log();
-            Closer();
-        }
-         function del(){
-            var dels =document.getElementById('ops').value;
+        
+        function makeblur(soo){
+            const x =document.getElementById('opscr')
+            if(soo === 'BLUR'){
+                y = 0;
+                console.log('fo');
+            }
+           else if (soo === 'CON+') {
+                y = 1;
+                console.log('f1');
+            } 
+            else if (soo === 'CON-'){
+                y = 2;
+            }
+            else if (soo === 'BW'){
+                y = 3
+            }
+           // else if (soo === '')
+            else {
+                y = -1;
+                console.log('f2');
+            }
             
-         }
+            switch (y) {
+                case 0:
+                x.classList.toggle('blur')
+                console.log('0');
+                    break;
+                case 1:
+                x.classList.toggle('contra')
+                console.log('1');
+                    break;
+                case 2 :
+                x.classList.toggle('contras')
+                console.log('2');
+                    break;
+                case 3:
+                x.classList.toggle('bw')
+                default:
+                    break;
+            }
+            
 
+
+        }
+
+        let profile = document.getElementById('opscr');
+        let inputfile = document.getElementById('inpu');
+        inputfile.onchange = function readurl(){
+            profile.src = URL.createObjectURL(inputfile.files[0])
+           
+        }
     </script>
 </body>
 </html>

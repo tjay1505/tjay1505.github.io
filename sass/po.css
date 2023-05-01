@@ -1,0 +1,81 @@
+.mainscreen .tools #diabox, .mainscreen .tools .filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.out {
+  width: 100vw;
+  height: 100vh;
+  background-color: #a36060;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainscreen {
+  width: 80vw;
+  height: 90vh;
+  background-color: #000000;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainscreen .opscreen {
+  width: auto;
+  height: auto;
+  margin: 2%;
+  border-radius: 2%;
+}
+.mainscreen .blur {
+  filter: blur(4px);
+}
+.mainscreen .contra {
+  filter: contrast(1100%);
+}
+.mainscreen .contras {
+  filter: contrast(20%);
+}
+.mainscreen .bw {
+  filter: grayscale(10);
+}
+.mainscreen .tools {
+  width: 96%;
+  height: 28%;
+  background-color: #201d1d;
+  border-radius: 2%;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.mainscreen .tools .filter {
+  width: 50%;
+  height: 70%;
+  border-radius: 2%;
+  background-color: #d9d9d9;
+  color: rgb(0, 0, 0);
+}
+.mainscreen .tools .filter:hover {
+  border: 1px solid black;
+}
+.mainscreen .tools #diabox {
+  width: 70%;
+  height: 50%;
+  background-color: rgb(205, 205, 205);
+  border-radius: 2%;
+}
+.mainscreen .tools #inpu {
+  grid-column: span 3;
+  display: none;
+}/*# sourceMappingURL=po.css.map */

@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+%centers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+$marginfor:7vmin;
+$inc1: hsl(237, 14%, 26%);
+$gardi:linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+body{
+    background-image: url('/images/bg-mobile-light.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+    @extend %centers;
+    padding-top: 10%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 7vmin;
+    font-weight: 700;
+    flex-direction: column;
+    
+}
+.todo_head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+}
+#text_vally{
+    width: 80%;
+    margin: $marginfor;
+    height:9vmin;
+    border: none;
+    border-radius: 1vmin;
+    text-align: center;
+}
+#text_vally:focus{
+    outline: none;
+}
+ .display{
+    height:9vmin;
+    border-bottom: 0.4px solid rgb(122, 122, 122);
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    align-items: center;
+    justify-items: center;
+
+    .imgtick{
+        background: $gardi;
+        width: 4vmin;
+        height: 4vmin;
+        @extend %centers;
+        border-radius: 4vmin;
+    }
+    .view{
+        font-size: 2.5vmin;
+        font-style: italic;
+        font-family: cursive;
+        justify-self: start;
+        position: relative;
+        
+    }
+}
+#outlet{
+    width: 80%;
+    display: flex;
+    
+    overflow:scroll;
+    align-items:stretch;
+    justify-content: start;
+    flex-direction: column;
+    overflow: visible;
+}
+//
+.newnode{
+    border-bottom: 0.4px solid rgb(122, 122, 122);
+    height: 9vmin;
+}
+#copy{
+    width: 80%;
+    border: 1px solid red;
+    height: 9vmin;
+}
+#cross{
+    width: 5vmin;
+    height: 5vmin;
+}

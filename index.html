@@ -3,108 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>T O D O</title>
-    <link rel="stylesheet" href="/sass/index.css">
-    <link rel="shortcut icon" href="images/favicon-32x32.png" type="image/x-icon">
+    <title>part 2</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+       body{
+            height: 100vh;
+            background-color: whitesmoke;
+       }
+        .head{
+            height: 20vmin;
+            display: grid;
+            grid-template-rows: 2fr 1fr;
+            align-items: center;
+            justify-items:center ;
+            
+        }
+        .newform{
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            flex-direction: column;
+        }
+        .wrapper{
+            width: 80vw;
+            height: 10vh;
+            font-weight: 800;
+            font-size: 3vmin;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+             /* border: 1px solid saddlebrown;  */
+        }
+        input{
+            width: 75%;
+            height: 50%;
+            margin-top: 2%;
+            border: 1px solid rgb(196, 196, 196);
+            border-radius: 1vmin;
+        }
+        label{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: gray;
+        }
+        button{
+            width: 80%;
+            height: 7vmin;
+            background-color: rgb(65, 152, 228);
+            border: none;
+            border-radius: 1vmin;
+            font-size: 3.5vmin;
+            margin-top: 3%;
+        }
+        p{
+            color: rgb(189, 189, 189);
+            margin: 10%;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+        }
+        @media only screen and (min-width:600px){
+            .newform{
+                background-color: #e66666;
+            }
+        }
+    </style>
 </head>
-<style>
-    :root{
-        --bc1:rgb(255, 255, 255);
-        --bc2:black;
-        --bc3:hsl(0, 0%, 94%);
-    }
-    *{
-        color: var(--bc2);
-    }
-    body{
-        background-color: var(--bc1);
-    }
-    #text_vally{
-        background-color: var(--bc3);
-    }
-    .display{
-        background-color: var(--bc3);
-        
-    }
-    
-</style>
 <body>
-    
-    <div class="todo_head">
-        <span>T &nbsp;O &nbsp;D &nbsp;O</span>
-
-        <img src="/images/icon-moon.svg" id="btn_img" alt="" style="cursor: pointer; width: 5vmin;" onclick="Togglethe()" >
+    <div class="head">
+        <h2>LOGIN FORM</h2>
     </div>
 
-    <input type="" id="text_vally"  onchange="crea()" value="" >
-
-
-    <div id="outlet">
-        <div class="display addi" id="displays">
-            <div class="imgtick" id="tick">
-                <img src="/images/icon-check.svg" alt=""> 
-            </div>
-        
-            <div id="views" class="view">  Going to complete the pro</div>
-    
-            <img src="/images/icon-cross.svg" id="cross" style="cursor: pointer;" onclick="deleteme()" alt="">
+    <form class="newform" >
+        <div class="wrapper" >
+            <label for="N">Name </label>
+            <input type="text" name="name" id="N">
         </div>
-        
-    </div>
 
-    
+        <div class="wrapper" >
+            <label  for="E">E-mail </label>
+            <input type="email" name="email" id="E">
+        </div>
+
+        <div class="wrapper" >
+            <label  for="P">password </label>
+            <input type="password" name="password" id="P">
+        </div>
+
+        <button type="submit"  >LOGIN</button>
+        <p>JSON data alerted as popup message by clicking LOGON button  </p>
+
+    </form>
+
     <script>
-        const textaera = document.getElementById('displays')
-        const cloned = textaera.cloneNode(true)
-        var x = document.querySelector(':root')
-        var bo = 1
-        var imgbtn = document.getElementById('btn_img')
-        const outlet = document.getElementById('outlet')
-        //for textsarea copied
-        
-        function deleteme(){
-            alert('heyy Unnatha ... unathaa')
+         function ConvertJson(event) {
+            event.preventDefault();
+            
+            const data = new FormData(event.target);
+            
+            const formJSON = Object.fromEntries(data.entries());
             
             
-        }
-        function crea(){
-            const textaera = document.getElementById('displays')
-            const viewo = document.getElementById('views')
-            const textvally =document.getElementById('text_vally')
-            const outlet = document.getElementById('outlet')
-            const countele = outlet.children.length;
+            const results = document.querySelector('.results pre');
 
-            const newval = textvally.value
-            const newxyz = textaera.cloneNode(true)
-            viewo.innerHTML = countele+' - '+ newval
-            outlet.append(newxyz)
-            console.log(countele);
-
+            alert(JSON.stringify(formJSON,null,1))
         }
 
-        const moon = () => {
-            x.style.setProperty('--bc1','white')
-            x.style.setProperty('--bc2','black')
-            imgbtn.src = '/images/icon-moon.svg'
-            x.style.setProperty('--bc3','white')
-            document.body.style.backgroundImage = 'url(/images/bg-mobile-light.jpg)'
-        }
-        const sun = () => {
-            x.style.setProperty('--bc1','black')
-            x.style.setProperty('--bc2','white')
-            imgbtn.src = '/images/icon-sun.svg'
-            x.style.setProperty('--bc3','hsl(237, 14%, 26%)')
+        const form = document.querySelector('.newform');
+        form.addEventListener('submit', ConvertJson);
 
-            document.body.style.backgroundImage = 'url(/images/bg-mobile-dark.jpg)'
-        }
-        function Togglethe(){
-            var boo = bo++
-            var y = boo%2
-            y ? boo=true : boo = false
-            boo ? sun(): moon();
-        }        
-
-       
-</script>
+    </script>
 </body>
 </html>

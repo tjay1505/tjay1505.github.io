@@ -1,130 +1,267 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>part 2</title>
-    <style>
-        *{
-            padding: 0;
-            margin: 0;
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        }
-       body{
-            height: 100vh;
-            background-color: whitesmoke;
-       }
-        .head{
-            height: 20vmin;
-            display: grid;
-            grid-template-rows: 2fr 1fr;
-            align-items: center;
-            justify-items:center ;
-            
-        }
-        .newform{
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            flex-direction: column;
-        }
-        .wrapper{
-            width: 80vw;
-            height: 10vh;
-            font-weight: 800;
-            font-size: 3vmin;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-             /* border: 1px solid saddlebrown;  */
-        }
-        input{
-            width: 75%;
-            height: 50%;
-            margin-top: 2%;
-            border: 1px solid rgb(196, 196, 196);
-            border-radius: 1vmin;
-            padding-left: 2%;
-        }
-        input:focus{
-            outline: none;
-            border: 1px solid rgb(73, 73, 73);
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+  background-color:var(--c1);
+}
 
-        }
-        label{
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            color: gray;
-        }
-        button{
-            width: 80%;
-            height: 7vmin;
-            background-color: rgb(65, 152, 228);
-            border: none;
-            border-radius: 1vmin;
-            font-size: 3.5vmin;
-            margin-top: 3%;
-        }
-        p{
-            color: rgb(189, 189, 189);
-            margin: 10%;
-            position: absolute;
-            bottom: 0;
-            text-align: center;
-        }
-        @media only screen and (min-width:600px){
-            .wrapper{
-                width: 40vw;
-            }
-            button{
-                width: 40%;
-            }
-        }
-    </style>
+:root{
+    --c1: rgb(255, 255, 255);
+    --c2 : black;
+    --c3 : #c8c8c8;
+    --c4 : #555;
+    --c5 : rgb(223, 223, 223);
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif';
+
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: var(--c5);
+  font-size: 18px;
+  transition: 0.2s;
+  color: var(--c2);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 500;
+}
+
+
+
+ul li:hover {
+  background: var(--c3);
+}
+
+ul li.checked {
+  background: #888;
+  color: var(--c1);
+  text-decoration: line-through;
+}
+
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: var(--c1);
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: var(--c2);
+}
+
+.header {
+  background-image: url(/ases/lightbgc.jpg);
+  padding: 30px 40px;
+  color: var(--c1);
+  text-align: center;
+  height: 40vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  
+}
+.inpu{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 65%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+ 
+}
+
+.addBtn {
+  padding: 10px;
+  width: 25%;
+  background: var(--c3);
+  color: var(--c4);
+  
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0;
+  
+  
+}
+
+.addBtn:hover {
+  background-color: #bbb;
+}
+.warp-head{
+    margin-bottom: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+h1{
+    color: var(--c2) ;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.outbox{
+    margin-top: 5%;
+}
+</style>
 </head>
 <body>
-    <div class="head">
-        <h2>LOGIN FORM</h2>
-    </div>
 
-    <form class="newform" >
-        <div class="wrapper" >
-            <label for="N">Name </label>
-            <input type="text" name="name" id="N">
-        </div>
+    
+<div class="header" id="bgc" >
+    <div class="warp-head"><h1>Todo  App</h1> <img onclick="moodeSwap()" id="icon" style="width: 5%;" src="/ases/moon-solid.svg" alt=""> </div>
+     
+    <div class="inpu">
+       <input type="text" id="myInput" placeholder="title...">
+       <span onclick="newElement()" class="addBtn">Add</span>
+  </div>
+</div>
 
-        <div class="wrapper" >
-            <label  for="E">E-mail </label>
-            <input type="email" name="email" id="E">
-        </div>
 
-        <div class="wrapper" >
-            <label  for="P">password </label>
-            <input type="password" name="password" id="P">
-        </div>
+<ul id="myUL" class="outbox">
+    <li class="checked" > current project </li>
+    <li class="" > upcoming project </li>
 
-        <button type="submit"  >LOGIN</button>
-        <p>JSON data alerted as popup message by clicking LOGON button  </p>
 
-    </form>
+</ul>
 
-    <script>
-         function ConvertJson(event) {
-            event.preventDefault();
-            
-            const data = new FormData(event.target);
-            
-            const formJSON = Object.fromEntries(data.entries());
-            
-            
-            const results = document.querySelector('.results pre');
+<script>
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
 
-            alert(JSON.stringify(formJSON,null,1))
-        }
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
 
-        const form = document.querySelector('.newform');
-        form.addEventListener('submit', ConvertJson);
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
 
-    </script>
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+const imgsrc = document.getElementById('icon')
+const bgcimg = document.getElementById('bgc')
+let x = true
+
+function moodeSwap(){
+    var style = getComputedStyle(document.body)
+    var root = document.documentElement
+    root.style.setProperty('--c1','red')
+   // console.log( style.getPropertyValue('--c2') ) 
+    if(x){
+        console.log('yes');
+        root.style.setProperty('--c1','black')
+        root.style.setProperty('--c2' , 'white')
+        root.style.setProperty('--c5','rgb(44, 44, 44)')
+        x = !x
+        bgcimg.style.backgroundImage = "url('/ases/drakbgc.jpeg')"
+        imgsrc.style.filter = 'invert()'
+    }
+    else{
+        console.log('no');
+        root.style.setProperty('--c1','white')
+        root.style.setProperty('--c2' , 'black')
+        bgcimg.style.backgroundImage = "url('/ases/lightbgc.jpg')"
+        imgsrc.style.filter = 'invert(0)'
+        root.style.setProperty('--c5','rgb(223, 223, 223)')
+
+
+        x = !x;
+    }
+
+    
+}
+</script>
+
 </body>
 </html>
